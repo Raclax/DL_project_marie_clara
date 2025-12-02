@@ -1,5 +1,5 @@
 # CROHME Dataset pour YOLO
-path: /home/raclax/Documents/M2/Part2/DL2/Project/YOLO_dataset
+path: /home/raclax/Documents/M2/Part2/DL2/Project/DL_project_marie_clara/YOLO_dataset
 train: images/train
 val: images/val
 
