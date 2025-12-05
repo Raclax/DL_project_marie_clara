@@ -1,0 +1,96 @@
+------------------- 1er lancement --------------------
+
+fais avec /content/drive/Othercomputers/Bureau/info m2/UE Deep learning for computer vision/Projet/YOLO_dataset/images/train/001-equation002.png
+et
+Box 0: letter (conf: 0.90) -> [474.0, 26.4, 488.7, 59.5]
+Box 1: letter (conf: 0.89) -> [368.8, 26.7, 394.5, 40.4]
+Box 2: letter (conf: 0.88) -> [226.9, 30.0, 240.1, 57.8]
+Box 3: letter (conf: 0.88) -> [94.4, 16.8, 115.9, 40.7]
+Box 4: letter (conf: 0.88) -> [37.2, 30.7, 64.6, 44.1]
+Box 5: letter (conf: 0.87) -> [146.5, 14.4, 167.9, 44.9]
+Box 6: other (conf: 0.84) -> [435.7, 20.8, 458.6, 37.0]
+Box 7: letter (conf: 0.84) -> [268.5, 19.8, 292.6, 38.8]
+Box 8: other (conf: 0.77) -> [173.9, 35.9, 179.9, 49.3]
+Box 9: letter (conf: 0.77) -> [204.3, 9.6, 221.9, 44.0]
+
+------------------- 2eme lancement -------------------
+
+
+
+image 1/1 /content/drive/MyDrive/dlcv/YOLO_dataset/images/train/001-equation002.png: 640x640 7 letters, 3 digits, 3 others, 65.9ms
+Speed: 2.5ms preprocess, 65.9ms inference, 1.0ms postprocess per image at shape (1, 3, 640, 640)
+Results saved to /content/runs/detect/predict
+Boxes (xyxy): tensor([[146.6695,  14.6585, 167.7846,  44.6087],
+        [435.1287,  20.7451, 458.4171,  36.8410],
+        [474.2053,  26.4884, 488.5154,  59.4879],
+        [ 37.3477,  30.6779,  64.6942,  43.9019],
+        [368.8954,  26.7201, 394.3566,  40.4666],
+        [268.0767,  19.9042, 292.5310,  38.7428],
+        [ 94.7336,  16.7847, 115.9165,  40.7345],
+        [227.3958,  30.0844, 239.5676,  57.6083],
+        [203.9463,   9.8438, 221.7298,  43.9848],
+        [173.8165,  36.0718, 179.6688,  49.0253],
+        [319.3467,  14.4894, 340.1412,  37.8833],
+        [354.1084,  34.0495, 358.5114,  45.3752],
+        [  8.9852,  10.8072,  33.0398,  36.7475]], device='cuda:0')
+Boxes (xywhn): tensor([[0.3145, 0.4233, 0.0422, 0.4279],
+        [0.8935, 0.4113, 0.0466, 0.2299],
+        [0.9627, 0.6141, 0.0286, 0.4714],
+        [0.1020, 0.5327, 0.0547, 0.1889],
+        [0.7633, 0.4799, 0.0509, 0.1964],
+        [0.5606, 0.4189, 0.0489, 0.2691],
+        [0.2107, 0.4109, 0.0424, 0.3421],
+        [0.4670, 0.6264, 0.0243, 0.3932],
+        [0.4257, 0.3845, 0.0356, 0.4877],
+        [0.3535, 0.6078, 0.0117, 0.1851],
+        [0.6595, 0.3741, 0.0416, 0.3342],
+        [0.7126, 0.5673, 0.0088, 0.1618],
+        [0.0420, 0.3397, 0.0481, 0.3706]], device='cuda:0')
+Confidence: tensor([0.9026, 0.8877, 0.8657, 0.8616, 0.8584, 0.8542, 0.8444, 0.8424, 0.7985, 0.7814, 0.7455, 0.7411, 0.6714], device='cuda:0')
+Classes: tensor([0., 3., 0., 0., 0., 0., 0., 0., 1., 3., 1., 3., 1.], device='cuda:0')
+Box 0: letter (conf: 0.90) -> [146.7, 14.7, 167.8, 44.6]
+Box 1: other (conf: 0.89) -> [435.1, 20.7, 458.4, 36.8]
+Box 2: letter (conf: 0.87) -> [474.2, 26.5, 488.5, 59.5]
+Box 3: letter (conf: 0.86) -> [37.3, 30.7, 64.7, 43.9]
+Box 4: letter (conf: 0.86) -> [368.9, 26.7, 394.4, 40.5]
+Box 5: letter (conf: 0.85) -> [268.1, 19.9, 292.5, 38.7]
+Box 6: letter (conf: 0.84) -> [94.7, 16.8, 115.9, 40.7]
+Box 7: letter (conf: 0.84) -> [227.4, 30.1, 239.6, 57.6]
+Box 8: digit (conf: 0.80) -> [203.9, 9.8, 221.7, 44.0]
+Box 9: other (conf: 0.78) -> [173.8, 36.1, 179.7, 49.0]
+Box 10: digit (conf: 0.75) -> [319.3, 14.5, 340.1, 37.9]
+Box 11: other (conf: 0.74) -> [354.1, 34.0, 358.5, 45.4]
+Box 12: digit (conf: 0.67) -> [9.0, 10.8, 33.0, 36.7]
+
+
+
+
+[11]
+1 min
+from ultralytics import YOLO
+
+def evaluate_yolo_model_simple(model, data_yaml_path, imgsz=640, conf=0.25):
+    metrics = model.val(
+        data=data_yaml_path,
+        imgsz=imgsz,
+        conf=conf,
+        split='val',
+        plots=False
+    )
+
+Ultralytics 8.3.235 🚀 Python-3.12.12 torch-2.9.0+cu126 CUDA:0 (Tesla T4, 15095MiB)
+rt-detr-l summary: 302 layers, 31,991,960 parameters, 0 gradients, 103.4 GFLOPs
+val: Fast image access ✅ (ping: 0.6±0.2 ms, read: 1.3±0.9 MB/s, size: 2.1 KB)
+val: Scanning /content/drive/.shortcut-targets-by-id/1-YQ85lGPGEkbtO30PCUgFmtxt3yu8kDe/YOLO_dataset/labels/val.cache... 1999 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1999/1999 2.8Mit/s 0.0s
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 125/125 1.4it/s 1:28
+                   all       1999      19394      0.885      0.832      0.872      0.756
+                letter       1183       5242      0.915       0.81      0.872      0.777
+                 digit       1087       4518      0.887      0.885      0.903      0.775
+              operator       1154       2721      0.896      0.804      0.858      0.696
+                 other       1670       6913      0.841      0.829      0.855      0.776
+Speed: 0.9ms preprocess, 34.2ms inference, 0.0ms loss, 0.4ms postprocess per image
+=== RÉSULTATS D'ÉVALUATION SIMPLIFIÉE ===
+mAP@0.5:  0.8718859690283254
+mAP@0.5:0.95:  0.7560325066200742
+Précision (P): [    0.91538     0.88664     0.89644     0.84065]
+Rappel (R): [    0.81019     0.88461     0.80412     0.82876]
